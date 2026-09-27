@@ -1,0 +1,24 @@
+[package]
+name = "decklink-desktop"
+description = "Play out the X11 desktop, or one RandR output of it, on a Blackmagic DeckLink card"
+repository = "https://github.com/simukka/decklink-desktop"
+version = "0.1.0"
+edition = "2021"
+authors = ["Kyle Simukka <kylesimukka@gmail.com>"]
+license = "LGPL-2.1-or-later"
+
+[dependencies]
+decklink = { git = "https://github.com/simukka/decklink" }
+x11rb = { version = "0.13", features = ["shm", "xfixes", "randr"] }
+libc = "0.2"
+ctrlc = "3.4"
+log = "0.4"
+env_logger = "0.11"
+
+[profile.release]
+debug = 1
+
+[features]
+default = ["gpu"]
+# GPU Lanczos scaling via the decklink crate (`--scale lanczos-gpu`)
+gpu = ["decklink/gpu"]

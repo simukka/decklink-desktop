@@ -1,0 +1,3 @@
+target/
+# Machine-specific DECKLINK_SDK_PATH
+.cargo/config.toml
